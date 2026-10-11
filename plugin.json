@@ -1,0 +1,17 @@
+{
+    "id": "minecraft version changer",
+    "name": "Minecraft Version Changer",
+    "author": "ItZRealMoritz",
+    "version": "1.3.0-beta",
+    "description": "Switch your Minecraft server software and version in one click, right from the panel. Made by ItZRealMoritz.",
+    "update_url": null,
+    "category": "plugin",
+    "namespace": "Pelican\\Versions",
+    "class": "VersionsPlugin",
+    "panels": [
+        "admin",
+        "server"
+    ],
+    "panel_version": "^1.0.0-beta36",
+    "composer_packages": []
+}

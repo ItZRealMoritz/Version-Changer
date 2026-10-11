@@ -1,0 +1,13 @@
+# Build and release packages
+*.zip
+*.tar.gz
+/build/
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Testing & Preview
+/preview.html

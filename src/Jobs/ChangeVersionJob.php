@@ -30,7 +30,7 @@ class ChangeVersionJob implements ShouldQueue
     public function __construct(
         public readonly int $changeRecordId
     ) {
-        $queue = config('versions.queue', null);
+        $queue = config('minecraft-version-changer.queue', null);
         if (!empty($queue)) {
             $this->onQueue($queue);
         }

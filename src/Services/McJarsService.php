@@ -13,7 +13,7 @@ class McJarsService
 
     public function getTypes(): array
     {
-        $ttl = (int) config('versions.api_cache_ttl', 300);
+        $ttl = (int) config('minecraft-version-changer.api_cache_ttl', 300);
 
         return Cache::remember('versions:mcjars:types', $ttl, function () {
             try {
@@ -37,7 +37,7 @@ class McJarsService
     public function getVersions(string $type): array
     {
         $typeKey = strtoupper(trim($type));
-        $ttl = (int) config('versions.api_cache_ttl', 300);
+        $ttl = (int) config('minecraft-version-changer.api_cache_ttl', 300);
 
         return Cache::remember("versions:mcjars:versions:{$typeKey}", $ttl, function () use ($typeKey) {
             try {
@@ -85,7 +85,7 @@ class McJarsService
     {
         $typeKey = strtoupper(trim($type));
         $mcVer = trim($mcVersion);
-        $ttl = (int) config('versions.api_cache_ttl', 300);
+        $ttl = (int) config('minecraft-version-changer.api_cache_ttl', 300);
 
         return Cache::remember("versions:mcjars:builds:{$typeKey}:{$mcVer}", $ttl, function () use ($typeKey, $mcVer) {
             try {

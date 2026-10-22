@@ -10,14 +10,14 @@ class VersionsServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $viewsDir = plugin_path('versions', 'resources/views');
+        $viewsDir = plugin_path('minecraft-version-changer', 'resources/views');
         if (is_dir($viewsDir)) {
-            $this->loadViewsFrom($viewsDir, 'versions');
+            $this->loadViewsFrom($viewsDir, 'minecraft-version-changer');
         }
 
-        $configFile = plugin_path('versions', 'config/versions.php');
+        $configFile = plugin_path('minecraft-version-changer', 'config/minecraft-version-changer.php');
         if (file_exists($configFile)) {
-            $this->mergeConfigFrom($configFile, 'versions');
+            $this->mergeConfigFrom($configFile, 'minecraft-version-changer');
         }
 
         if ($this->app->runningInConsole()) {

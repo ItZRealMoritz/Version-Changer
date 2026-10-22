@@ -88,7 +88,7 @@ class VersionChangeService
 
     private function stageStopping(VersionChange $record): void
     {
-        if (!config('versions.auto_stop_server', true)) {
+        if (!config('minecraft-version-changer.auto_stop_server', true)) {
             $record->appendLog('Step 1/6: Automatic power handling is disabled.');
             $record->appendLog('  WARNING: Make sure the server is stopped manually before continuing.');
             $record->setCtx(['was_running' => false]);
@@ -141,7 +141,7 @@ class VersionChangeService
         }
 
         $elapsed = now()->timestamp - (int) $record->ctx('stop_started_at', now()->timestamp);
-        $maxWait = (int) config('versions.stop_timeout', 180);
+        $maxWait = (int) config('minecraft-version-changer.stop_timeout', 180);
 
         if ($elapsed >= $maxWait) {
             throw new RuntimeException(
@@ -200,7 +200,7 @@ class VersionChangeService
 
                 if ($hasJar) {
                     $bakName = "{$jarName}.bak";
-                    if (config('versions.keep_backup', true)) {
+                    if (config('minecraft-version-changer.keep_backup', true)) {
                         $hasOldBak = collect($entries)->contains(
                             fn ($e) => ($e['name'] ?? '') === $bakName && !($e['directory'] ?? false)
                         );
@@ -222,7 +222,7 @@ class VersionChangeService
                 }
             }
 
-            if (config('versions.clean_libraries', true)) {
+            if (config('minecraft-version-changer.clean_libraries', true)) {
                 $hasLibraries = collect($entries)->contains(
                     fn ($e) => ($e['name'] ?? '') === 'libraries' && ($e['directory'] ?? false)
                 );
@@ -304,7 +304,7 @@ class VersionChangeService
         $filename = (string) $record->ctx('dl_filename', $targetJar);
         $size = $this->getRemoteFileSize($filename);
         $elapsed = now()->timestamp - (int) $record->ctx('dl_started_at', now()->timestamp);
-        $timeout = (int) config('versions.download_timeout', 600);
+        $timeout = (int) config('minecraft-version-changer.download_timeout', 600);
 
         if ($size === null || $size <= 0) {
             if ($elapsed >= $timeout) {
@@ -453,7 +453,7 @@ class VersionChangeService
 
     private function stageRestart(VersionChange $record): void
     {
-        if ($record->ctx('was_running') && config('versions.auto_restart_server', true)) {
+        if ($record->ctx('was_running') && config('minecraft-version-changer.auto_restart_server', true)) {
             $record->appendLog('Step 6/6: Restarting the server with the new version...');
             try {
                 $this->serverRepo->power('start');

@@ -10,7 +10,7 @@ class VersionsPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'versions';
+        return 'minecraft-version-changer';
     }
 
     public function register(Panel $panel): void

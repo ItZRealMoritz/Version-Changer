@@ -24,11 +24,11 @@ class VersionsPage extends Page
     protected static ?string $slug            = 'versions';
     protected static ?int    $navigationSort  = 8;
 
-    protected string $view = 'versions::filament.server.pages.versions-page';
+    protected string $view = 'minecraft-version-changer::filament.server.pages.versions-page';
 
     public static function getNavigationSort(): ?int
     {
-        return (int) config('versions.navigation_sort', static::$navigationSort);
+        return (int) config('minecraft-version-changer.navigation_sort', static::$navigationSort);
     }
 
     public static function canAccess(): bool

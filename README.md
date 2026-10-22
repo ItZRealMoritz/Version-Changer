@@ -34,7 +34,7 @@ Switch your Minecraft server's software and version straight from the panel — 
 ## Install
 
 1. Open your panel as an admin and go to **Admin → Plugins**.
-2. Click **Import from file** and upload the `versions.zip`.
+2. Click **Import from file** and upload the `minecraft-version-changer.zip`.
 3. Hit **Install** next to "Version Changer".
 4. Run `php artisan optimize:clear` once, then open a Minecraft server and look for **Version Changer** in the sidebar.
 

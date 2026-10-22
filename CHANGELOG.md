@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## [1.3.1-beta] - 2026-10-22
+
+### Changed
+- Plugin ID set to `minecraft-version-changer` (in `plugin.json` and `VersionsPlugin::getId()`) to match the Pelican Hub listing.
+
+### Removed
+- Removed the `dist/` folder and committed release zip files from the repository.
+
+---
+
 ## [1.3.0-beta] - 2026-10-11
 
 ### Changed
